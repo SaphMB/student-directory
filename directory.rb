@@ -1,8 +1,6 @@
-
-
 def input_students
   puts "Please enter the names of the students"
-  puts "To finish, just hit retun twice"
+  puts "To finish, just hit return twice"
 
   students = []
   name = gets.chomp
@@ -21,7 +19,7 @@ def print_header
 end
 
 def print(students)
-  students.each do |student|
+  students.each do |student, index|
     puts "#{student[:name]} (#{student[:cohort]} cohort)"
   end
 end
