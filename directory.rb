@@ -6,6 +6,7 @@ students = [
 {name: "Alex DeLarge", cohort: :novemeber},
 {name: "The Wicked Witch of the West", cohort: :novemeber},
 {name: "Terminator", cohort: :novemeber},
+{name: "The Joker", cohort: :novemeber},
 {name: "Freddy Krueger", cohort: :novemeber},
 {name: "Joffrey Baratheon", cohort: :novemeber},
 {name: "Norman Bates", cohort: :novemeber}
