@@ -19,7 +19,8 @@ def print_header
 end
 
 def print(students)
-  students.each_with_index do |student, index|
+  d_students = students.select {|student| student[:name].chars.first == "D" }
+  d_students.each_with_index do |student, index|
     puts "#{index+1}. #{student[:name]} (#{student[:cohort]} cohort)"
   end
 end
