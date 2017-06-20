@@ -1,5 +1,7 @@
+
+
 def input_students
-  puts "Please enter hte names of the students"
+  puts "Please enter the names of the students"
   puts "To finish, just hit retun twice"
 
   students = []
