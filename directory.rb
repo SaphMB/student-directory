@@ -24,8 +24,8 @@ def input_students
 end
 
 def print_header
-  puts "The students of Villains Academy"
-  puts "_____________"
+  puts "The students of Villains Academy".center(100)
+  puts "_____________".center(100)
 end
 
 def filter(students)
@@ -34,12 +34,12 @@ end
 
 def print(students)
   students.each_with_index do |student, index|
-    puts "#{index+1}. #{student[:name]} (#{student[:cohort]} cohort)"
+    puts "#{index+1}. #{student[:name]} (#{student[:cohort]} cohort)".center(100)
   end
 end
 
 def print_footer(names)
-  puts "Overall, we have #{names.count} great students"
+  puts "Overall, we have #{names.count} great students".center(100)
 end
 
 students = input_students
