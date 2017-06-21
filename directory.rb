@@ -18,9 +18,12 @@ def print_header
   puts "_____________"
 end
 
+def filter(students)
+  students.select {|student| student[:name][0].downcase == "d" }
+end
+
 def print(students)
-  d_students = students.select {|student| student[:name].chars.first == "D" }
-  d_students.each_with_index do |student, index|
+  students.each_with_index do |student, index|
     puts "#{index+1}. #{student[:name]} (#{student[:cohort]} cohort)"
   end
 end
@@ -30,6 +33,8 @@ def print_footer(names)
 end
 
 students = input_students
+students = filter(students)
+
 print_header
 print(students)
 print_footer(students)
