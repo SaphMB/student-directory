@@ -19,7 +19,7 @@ def print_header
 end
 
 def filter(students)
-  students.select {|student| student[:name][0].downcase == "d" }
+  students.select {|student| student[:name][0].downcase == "d" && student[:name].length < 12 }
 end
 
 def print(students)
