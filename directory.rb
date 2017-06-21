@@ -6,7 +6,17 @@ def input_students
   name = gets.chomp
 
   while !name.empty? do
-    students << {name: name, cohort: :november}
+    students << {
+      name: name,
+      cohort: :november,
+      country_of_birth: :UK,
+      height: 160,
+      age: 30,
+      pronouns: "They, Them",
+      email_address: "person@email.com",
+      hobbies: "Too many to name",
+      favourite_fictional_doctor: "Doctor Who"
+      }
     puts "Now we have #{students.count} students"
     name = gets.chomp
   end
