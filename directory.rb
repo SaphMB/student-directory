@@ -22,7 +22,7 @@ def input_students
     else
       puts "Now we have #{students.count} students"
     end
-    name = gets.chomp
+    name = gets[0..-2]
   end
   students
 end
