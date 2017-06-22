@@ -17,7 +17,11 @@ def input_students
       hobbies: "Too many to name",
       favourite_fictional_doctor: "Doctor Who"
       }
-    puts "Now we have #{students.count} students"
+    if students.count == 1
+      puts "Now we have #{students.count} student"
+    else
+      puts "Now we have #{students.count} students"
+    end
     name = gets.chomp
   end
   students
@@ -39,7 +43,11 @@ def print(students)
 end
 
 def print_footer(names)
-  puts "Overall, we have #{names.count} great students".center(100)
+  if names.count == 1
+    puts "Overall, we have #{names.count} great student".center(100)
+  else
+    puts "Overall, we have #{names.count} great students".center(100)
+  end
 end
 
 students = input_students
