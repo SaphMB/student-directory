@@ -3,7 +3,7 @@ def input_students
   puts "To finish, just hit return twice"
 
   students = []
-  name = gets.chomp
+  name = gets.chomp[0..-2]
 
   while !name.empty? do
     students << {
