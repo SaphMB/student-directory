@@ -3,20 +3,33 @@ def input_students
   puts "To finish, just hit return twice"
 
   students = []
-  name = gets.chomp[0..-2]
+  name = gets[0..-2]
 
   while !name.empty? do
+    puts "Fill in the following for each student - "
+      puts "Cohort:"
+      cohort = gets[0..-2]
+      puts "Country of birth:"
+      country_of_birth = gets[0..-2]
+      puts "Pronouns:"
+      pronouns = gets[0..-2]
+      puts "Age:"
+      age = gets[0..-2].to_i
+      puts "Hobbies:"
+      hobbies = gets[0..-2]
+      puts "Favourite fictional doctor:"
+      favourite_fictional_doctor = gets[0..-2]
+
     students << {
       name: name,
-      cohort: :november,
-      country_of_birth: :UK,
-      height: 160,
-      age: 30,
-      pronouns: "They, Them",
-      email_address: "person@email.com",
-      hobbies: "Too many to name",
-      favourite_fictional_doctor: "Doctor Who"
+      cohort: cohort,
+      country_of_birth: country_of_birth,
+      pronouns: pronouns,
+      age: age,
+      hobbies: hobbies,
+      favourite_fictional_doctor: favourite_fictional_doctor
       }
+
     if students.count == 1
       puts "Now we have #{students.count} student"
     else
@@ -25,7 +38,7 @@ def input_students
     name = gets[0..-2]
   end
   students
-end
+  end
 
 def print_header
   puts "The students of Villains Academy".center(100)
