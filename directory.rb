@@ -6,20 +6,26 @@ def input_students
   name = gets[0..-2]
 
   while !name.empty? do
-    puts "Fill in the following for each student - "
+    puts "Fill in the following for each student -"
       puts "Cohort:"
-      cohort = gets[0..-2]
-        cohort == "" ? cohort = :unspecified : cohort
+      cohort = gets.chomp.downcase.to_sym
+        accepted_cohort_values = [ :january, :february, :march, :april, :may, :june, :july, :august, :september, :october, :november, :december, :"" ]
+        until accepted_cohort_values.include? cohort
+         puts "Please type a month in full or leave blank if you do not currently have a cohort"
+         cohort = gets.chomp.downcase.to_sym
+        end
       puts "Country of birth:"
-      country_of_birth = gets[0..-2]
+      country_of_birth = gets[0..-2].to_sym
       puts "Pronouns:"
-      pronouns = gets[0..-2]
+      pronouns = gets[0..-2].to_sym
       puts "Age:"
-      age = gets[0..-2].to_i
+      age = gets[0..-2].to_sym
       puts "Hobbies:"
       hobbies = gets[0..-2]
       puts "Favourite fictional doctor:"
-      favourite_fictional_doctor = gets[0..-2]
+      favourite_fictional_doctor = gets[0..-2].to_sym
+
+      cohort == :"" ? cohort = :unspecified : cohort
 
     students << {
       name: name,
