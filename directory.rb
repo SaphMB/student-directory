@@ -9,6 +9,7 @@ def input_students
     puts "Fill in the following for each student - "
       puts "Cohort:"
       cohort = gets[0..-2]
+        cohort == "" ? cohort = :unspecified : cohort
       puts "Country of birth:"
       country_of_birth = gets[0..-2]
       puts "Pronouns:"
