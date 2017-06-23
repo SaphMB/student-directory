@@ -3,13 +3,14 @@ def input_students
   puts "To finish, just hit return twice"
 
   students = []
+  accepted_cohort_values = [ :january, :february, :march, :april, :may, :june, :july, :august, :september, :october, :november, :december, :"" ]
   name = gets[0..-2]
 
   while !name.empty? do
     puts "Fill in the following for each student -"
       puts "Cohort:"
       cohort = gets.chomp.downcase.to_sym
-        accepted_cohort_values = [ :january, :february, :march, :april, :may, :june, :july, :august, :september, :october, :november, :december, :"" ]
+
         until accepted_cohort_values.include? cohort
          puts "Please type a month in full or leave blank if you do not currently have a cohort"
          cohort = gets.chomp.downcase.to_sym
