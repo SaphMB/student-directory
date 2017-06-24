@@ -23,8 +23,8 @@ def interactive_menu
 end
 
 def input_students
-  #puts "Please enter the names of the students"
-  #puts "To finish, just hit return twice"
+  puts "Please enter the names of the students"
+  puts "To finish, just hit return twice"
 
   students = []
   accepted_cohort_values = [ :january, :february, :march, :april, :may, :june, :july, :august, :september, :october, :november, :december, :"" ]
@@ -34,21 +34,16 @@ def input_students
     puts "Fill in the following for each student -"
       puts "Cohort:"
       cohort = gets.chomp.downcase.to_sym
-
         until accepted_cohort_values.include? cohort
          puts "Please type a month in full or leave blank if you do not currently have a cohort"
          cohort = gets.chomp.downcase.to_sym
         end
       puts "Country of birth:"
-      country_of_birth = gets[0..-2].to_sym
+      country_of_birth = gets[0..-2]
       puts "Pronouns:"
-      pronouns = gets[0..-2].to_sym
+      pronouns = gets[0..-2]
       puts "Age:"
-      age = gets[0..-2].to_sym
-      puts "Hobbies:"
-      hobbies = gets[0..-2]
-      puts "Favourite fictional doctor:"
-      favourite_fictional_doctor = gets[0..-2].to_sym
+      age = gets[0..-2]
 
       cohort == :"" ? cohort = :unspecified : cohort
 
@@ -58,8 +53,6 @@ def input_students
       country_of_birth: country_of_birth,
       pronouns: pronouns,
       age: age,
-      hobbies: hobbies,
-      favourite_fictional_doctor: favourite_fictional_doctor
       }
 
     if students.count == 1
@@ -75,10 +68,6 @@ def input_students
 def print_header
   puts "The students of Villains Academy".center(100)
   puts "_____________".center(100)
-end
-
-def filter(students)
-  students.select {|student| student[:name][0].downcase == "d" && student[:name].length < 12 }
 end
 
 def print(students)
@@ -100,11 +89,7 @@ def print_footer(names)
 end
 
 interactive_menu
-
 students = input_students
-students = filter(students)
-
-
 
 print_header
 print(students)
