@@ -8,10 +8,11 @@ def print_menu
   puts "9. Exit"
 end
 
-def show_students
-  print_header
-  print_students_list
-  print_footer
+def interactive_menu
+  loop do
+    print_menu
+    process(STDIN.gets.chomp)
+  end
 end
 
 def process(selection)
@@ -31,20 +32,13 @@ def process(selection)
     end
 end
 
-def interactive_menu
-  loop do
-    print_menu
-    process(gets.chomp)
-  end
-end
-
 def input_students
   puts "Please enter the names of the students"
   puts "To finish, just hit return twice"
 
   @students = []
   accepted_cohort_values = [ :january, :february, :march, :april, :may, :june, :july, :august, :september, :october, :november, :december, :"" ]
-  name = gets[0..-2]
+  name = STDIN.gets[0..-2]
 
   while !name.empty? do
     puts "Fill in the following for each student -"
@@ -57,19 +51,29 @@ def input_students
 
       cohort == :"" ? cohort = :unspecified : cohort
 
-    @students << {
-      name: name,
-      cohort: cohort,
-      }
+    add_to_student_list(name,cohort)
 
     if @students.count == 1
       puts "Now we have #{@students.count} student"
     else
       puts "Now we have #{@students.count} students"
     end
-    name = gets[0..-2]
+    name = STDIN.gets[0..-2]
   end
   @students
+end
+
+def add_to_student_list(name,cohort)
+  @students << {
+    name: name,
+    cohort: cohort,
+    }
+end
+
+def show_students
+  print_header
+  print_students_list
+  print_footer
 end
 
 def print_header
@@ -106,13 +110,26 @@ def save_students
   file.close
 end
 
-def load_students
-  file = File.open('students.csv', "r")
+def load_students(filename = "students.csv")
+  file = File.open(filename, "r")
   file.readlines.each do |line|
     name, cohort = line.chomp.split(",")
-      @students << {name: name, cohort: cohort.to_sym}
+      add_to_student_list(name,cohort)
   end
   file.close
 end
 
+def try_load_students
+  filename = ARGV.first
+  return if filename.nil?
+  if File.exists?(filename)
+    load_students(filename)
+      puts "Loaded #{students.count} from #{filename}"
+  else
+    puts "Sorry, #{filename} doesn't exist."
+    exit
+  end
+end
+
+try_load_students
 interactive_menu
