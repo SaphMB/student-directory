@@ -33,8 +33,7 @@ def process(selection)
 end
 
 def input_students
-  puts "Please enter the names of the students"
-  puts "To finish, just hit return twice"
+  puts "Please enter the names of the students\nTo finish, just hit return twice"
 
   @students = []
   accepted_cohort_values = [ :january, :february, :march, :april, :may, :june, :july, :august, :september, :october, :november, :december, :"" ]
@@ -43,7 +42,7 @@ def input_students
   while !name.empty? do
     puts "Fill in the following for each student -"
       puts "Cohort:"
-      cohort = gets.chomp.downcase.to_sym
+        cohort = gets.chomp.downcase.to_sym
         until accepted_cohort_values.include? cohort
          puts "Please type a month in full or leave blank if you do not currently have a cohort"
          cohort = gets.chomp.downcase.to_sym
@@ -52,15 +51,16 @@ def input_students
       cohort == :"" ? cohort = :unspecified : cohort
 
     add_to_student_list(name,cohort)
+    student_count
 
-    if @students.count == 1
-      puts "Now we have #{@students.count} student"
-    else
-      puts "Now we have #{@students.count} students"
-    end
     name = STDIN.gets[0..-2]
   end
   @students
+end
+
+def student_count
+  puts "Now we have #{@students.count} student" if @students.count == 1
+  puts "Now we have #{@students.count} students" if @students.count > 1
 end
 
 def add_to_student_list(name,cohort)
@@ -92,16 +92,12 @@ def print_students_list
 end
 
 def print_footer
-  if @students.count == 1
-    puts "Overall, we have #{@students.count} great student".center(100)
-  else
-    puts "Overall, we have #{@students.count} great students".center(100)
-  end
+  puts "Overall, we have #{@students.count} great student".center(100) if @students.count == 1
+  puts "Overall, we have #{@students.count} great students".center(100) if @students.count > 1
 end
 
 def save_students
   file = File.open("students.csv", "w")
-
   @students.each do |student|
     student_data = [student[:name], student[:cohort]]
     csv_line = student_data.join(",")
